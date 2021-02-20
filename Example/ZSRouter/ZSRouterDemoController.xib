@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ZSRouterDemoController">
+            <connections>
+                <outlet property="testLabel" destination="PGt-Ig-MWt" id="VOS-CS-teQ"/>
+                <outlet property="view" destination="7Mx-mt-i4g" id="q47-V9-AKo"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="7Mx-mt-i4g">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e9I-Ac-Wxa">
+                    <rect key="frame" x="0.0" y="79" width="414" height="30"/>
+                    <state key="normal" title="routeURL"/>
+                    <connections>
+                        <action selector="btnClick1:" destination="-1" eventType="touchUpInside" id="EsN-Ie-J2D"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zjy-dR-SkI">
+                    <rect key="frame" x="0.0" y="109" width="414" height="30"/>
+                    <state key="normal" title="routeURL并传递对象参数"/>
+                    <connections>
+                        <action selector="btnClick2:" destination="-1" eventType="touchUpInside" id="eKB-4G-rhC"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dup-vy-D3F">
+                    <rect key="frame" x="0.0" y="139" width="414" height="30"/>
+                    <state key="normal" title="通过routeObjectURL获取返回值"/>
+                    <connections>
+                        <action selector="btnClick3:" destination="-1" eventType="touchUpInside" id="avp-l7-QDm"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c4l-DJ-VqM">
+                    <rect key="frame" x="0.0" y="199" width="414" height="30"/>
+                    <state key="normal" title="通配符(*)方式注册URL"/>
+                    <connections>
+                        <action selector="btnClick5:" destination="-1" eventType="touchUpInside" id="sRv-6j-m8V"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RZM-Mo-EuY">
+                    <rect key="frame" x="0.0" y="229" width="414" height="30"/>
+                    <state key="normal" title="route一个未注册的URL"/>
+                    <connections>
+                        <action selector="btnClick6:" destination="-1" eventType="touchUpInside" id="7eX-3g-0io"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A29-Fv-tpt">
+                    <rect key="frame" x="0.0" y="259" width="414" height="30"/>
+                    <state key="normal" title="Rewrite一个URL"/>
+                    <connections>
+                        <action selector="btnClick7:" destination="-1" eventType="touchUpInside" id="L4h-w2-AGO"/>
+                    </connections>
+                </button>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7My-et-UwT">
+                    <rect key="frame" x="0.0" y="289" width="414" height="30"/>
+                    <state key="normal" title="Rewrite一个URL并对某值URL Encode"/>
+                </button>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lxC-H2-jJj">
+                    <rect key="frame" x="0.0" y="319" width="414" height="30"/>
+                    <state key="normal" title="Rewrite一个URL并对某值URL Decode"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WiK-fU-KK6">
+                    <rect key="frame" x="0.0" y="169" width="414" height="30"/>
+                    <state key="normal" title="通过routeCallbackURL异步回调获取返回值"/>
+                    <connections>
+                        <action selector="btnClick4:" destination="-1" eventType="touchUpInside" id="0zN-ka-Sa7"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PGt-Ig-MWt">
+                    <rect key="frame" x="0.0" y="712" width="414" height="0.0"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0wT-z7-cME">
+                    <rect key="frame" x="0.0" y="354" width="414" height="30"/>
+                    <state key="normal" title="push"/>
+                    <connections>
+                        <action selector="pushBtnClick:" destination="-1" eventType="touchUpInside" id="Htm-4O-o6W"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="OJf-Bo-fWG"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="c4l-DJ-VqM" firstAttribute="trailing" secondItem="OJf-Bo-fWG" secondAttribute="trailing" id="0zC-pt-ADn"/>
+                <constraint firstAttribute="trailing" secondItem="lxC-H2-jJj" secondAttribute="trailing" id="1WV-gK-0VQ"/>
+                <constraint firstItem="dup-vy-D3F" firstAttribute="trailing" secondItem="OJf-Bo-fWG" secondAttribute="trailing" id="1er-ee-2Pd"/>
+                <constraint firstItem="lxC-H2-jJj" firstAttribute="leading" secondItem="OJf-Bo-fWG" secondAttribute="leading" id="2XC-bS-ctf"/>
+                <constraint firstItem="7My-et-UwT" firstAttribute="top" secondItem="A29-Fv-tpt" secondAttribute="bottom" id="8Yd-Pk-1pp"/>
+                <constraint firstItem="Zjy-dR-SkI" firstAttribute="top" secondItem="e9I-Ac-Wxa" secondAttribute="bottom" id="9VG-vu-4Rw"/>
+                <constraint firstItem="WiK-fU-KK6" firstAttribute="trailing" secondItem="OJf-Bo-fWG" secondAttribute="trailing" id="9sU-jJ-no7"/>
+                <constraint firstItem="PGt-Ig-MWt" firstAttribute="leading" secondItem="OJf-Bo-fWG" secondAttribute="leading" id="9xb-hU-phf"/>
+                <constraint firstItem="A29-Fv-tpt" firstAttribute="leading" secondItem="OJf-Bo-fWG" secondAttribute="leading" id="9yd-4c-T4J"/>
+                <constraint firstAttribute="trailing" secondItem="0wT-z7-cME" secondAttribute="trailing" id="BMc-oR-McG"/>
+                <constraint firstItem="0wT-z7-cME" firstAttribute="top" secondItem="lxC-H2-jJj" secondAttribute="bottom" constant="5" id="DhP-b8-gna"/>
+                <constraint firstItem="dup-vy-D3F" firstAttribute="top" secondItem="Zjy-dR-SkI" secondAttribute="bottom" id="GXJ-LE-Zb2"/>
+                <constraint firstItem="7My-et-UwT" firstAttribute="leading" secondItem="OJf-Bo-fWG" secondAttribute="leading" id="IoS-Ux-m25"/>
+                <constraint firstItem="e9I-Ac-Wxa" firstAttribute="top" secondItem="OJf-Bo-fWG" secondAttribute="top" constant="35" id="QUM-hq-iFD"/>
+                <constraint firstItem="e9I-Ac-Wxa" firstAttribute="leading" secondItem="OJf-Bo-fWG" secondAttribute="leading" id="SmE-eD-WCU"/>
+                <constraint firstItem="OJf-Bo-fWG" firstAttribute="trailing" secondItem="e9I-Ac-Wxa" secondAttribute="trailing" id="VAW-Uq-W2o"/>
+                <constraint firstItem="OJf-Bo-fWG" firstAttribute="bottom" secondItem="PGt-Ig-MWt" secondAttribute="bottom" constant="150" id="Wnu-fs-CTH"/>
+                <constraint firstItem="A29-Fv-tpt" firstAttribute="top" secondItem="RZM-Mo-EuY" secondAttribute="bottom" id="bIx-3i-M63"/>
+                <constraint firstItem="RZM-Mo-EuY" firstAttribute="top" secondItem="c4l-DJ-VqM" secondAttribute="bottom" id="boe-qE-elp"/>
+                <constraint firstItem="OJf-Bo-fWG" firstAttribute="trailing" secondItem="PGt-Ig-MWt" secondAttribute="trailing" id="c8t-T5-x9I"/>
+                <constraint firstItem="0wT-z7-cME" firstAttribute="leading" secondItem="OJf-Bo-fWG" secondAttribute="leading" id="cmM-Iy-00x"/>
+                <constraint firstItem="Zjy-dR-SkI" firstAttribute="leading" secondItem="OJf-Bo-fWG" secondAttribute="leading" id="dqM-A6-Dbx"/>
+                <constraint firstItem="A29-Fv-tpt" firstAttribute="trailing" secondItem="OJf-Bo-fWG" secondAttribute="trailing" id="dqm-QK-8Hb"/>
+                <constraint firstItem="WiK-fU-KK6" firstAttribute="top" secondItem="dup-vy-D3F" secondAttribute="bottom" id="i1P-OT-dOh"/>
+                <constraint firstItem="c4l-DJ-VqM" firstAttribute="leading" secondItem="OJf-Bo-fWG" secondAttribute="leading" id="i5b-3v-0yK"/>
+                <constraint firstItem="RZM-Mo-EuY" firstAttribute="trailing" secondItem="OJf-Bo-fWG" secondAttribute="trailing" id="jg8-EI-xeW"/>
+                <constraint firstItem="lxC-H2-jJj" firstAttribute="top" secondItem="7My-et-UwT" secondAttribute="bottom" id="jxo-oV-jqL"/>
+                <constraint firstItem="WiK-fU-KK6" firstAttribute="leading" secondItem="OJf-Bo-fWG" secondAttribute="leading" id="oIC-mm-TkY"/>
+                <constraint firstItem="dup-vy-D3F" firstAttribute="leading" secondItem="OJf-Bo-fWG" secondAttribute="leading" id="pLh-EZ-2go"/>
+                <constraint firstItem="RZM-Mo-EuY" firstAttribute="leading" secondItem="OJf-Bo-fWG" secondAttribute="leading" id="rEL-WD-0V5"/>
+                <constraint firstItem="c4l-DJ-VqM" firstAttribute="top" secondItem="WiK-fU-KK6" secondAttribute="bottom" id="sA6-6d-EmS"/>
+                <constraint firstItem="Zjy-dR-SkI" firstAttribute="trailing" secondItem="OJf-Bo-fWG" secondAttribute="trailing" id="uvp-Wm-sol"/>
+                <constraint firstAttribute="trailing" secondItem="7My-et-UwT" secondAttribute="trailing" id="xiu-IQ-p3x"/>
+            </constraints>
+            <point key="canvasLocation" x="-30" y="9"/>
+        </view>
+    </objects>
+</document>
