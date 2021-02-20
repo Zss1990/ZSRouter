@@ -22,7 +22,7 @@ pod 'ZSRouter'
 
 ## Author
 
-zhushuaishuai, zhushuaishuai@shandiantech.com
+_coCo_
 
 ## License
 

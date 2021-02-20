@@ -16,7 +16,7 @@ TODO: Add long description of the pod here.
 
   s.homepage         = 'https://github.com/Zss1990'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
-  s.author           = { 'zhushuaishuai' => 'https://github.com/Zss1990' }
+  s.author           = { '_coCo_' => 'https://github.com/Zss1990' }
   s.source           = { :git => 'https://github.com/Zss1990/ZSRouter.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
