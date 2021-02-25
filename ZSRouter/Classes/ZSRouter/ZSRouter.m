@@ -569,3 +569,57 @@ typedef NS_ENUM(NSInteger,ZSRouterType) {
 }
 
 @end
+
+@implementation ZSRouter (Default)
+// 注册
++ (void)addDefaultRoute:(NSString *)routePattern handler:(ZSRouterHandler)handlerBlock{
+    [ZSRouter checkDefaulUrl:routePattern];
+    ZSRouter *router = [ZSRouter routerForScheme:ZSAppScheme];
+    [router addRoute:routePattern handler:handlerBlock];
+}
++ (void)addDefaultObjectRoute:(NSString *)routePattern handler:(ZSObjectRouterHandler)handlerBlock{
+    [ZSRouter checkDefaulUrl:routePattern];
+    ZSRouter *router = [ZSRouter routerForScheme:ZSAppScheme];
+    [router addObjectRoute:routePattern handler:handlerBlock];
+}
++ (void)addDefaultCallbackRoute:(NSString *)routePattern handler:(ZSCallbackRouterHandler)handlerBlock{
+    [ZSRouter checkDefaulUrl:routePattern];
+    ZSRouter *router = [ZSRouter routerForScheme:ZSAppScheme];
+    [router addCallbackRoute:routePattern handler:handlerBlock];
+}
+// 执行
++ (BOOL)exeDefaultRoute:(NSString *)route{
+    [ZSRouter checkDefaulUrl:route];
+    return [ZSRouter exeRoute:ZSAppRoute(route)];
+}
++ (BOOL)exeDefaultRoute:(NSString *)route withParameters:(NSDictionary<NSString *, id> *_Nullable)parameters{
+    [ZSRouter checkDefaulUrl:route];
+    return [ZSRouter exeDefaultRoute:ZSAppRoute(route) withParameters:parameters];
+}
++ (id _Nullable )exeDefaultObjectRoute:(NSString *_Nullable)route{
+    [ZSRouter checkDefaulUrl:route];
+    return [ZSRouter exeDefaultObjectRoute:ZSAppRoute(route)];
+}
++ (id _Nullable )exeDefaultObjectRoute:(NSString *)route withParameters:(NSDictionary<NSString *, id> *_Nullable)parameters{
+    [ZSRouter checkDefaulUrl:route];
+    return [ZSRouter exeObjectRoute:ZSAppRoute(route) withParameters:parameters];
+}
++ (BOOL)exeDefaultCallbackRoute:(NSString *)route targetCallback:(ZSRouterCallback _Nullable )targetCallback{
+    [ZSRouter checkDefaulUrl:route];
+    return [ZSRouter exeCallbackRoute:ZSAppRoute(route) targetCallback:targetCallback];
+}
++ (BOOL)exeDefaultCallbackRoute:(NSString *)route withParameters:(NSDictionary<NSString *, id> *_Nullable)parameters targetCallback:(ZSRouterCallback _Nullable)targetCallback{
+    [ZSRouter checkDefaulUrl:route];
+    return [ZSRouter exeDefaultCallbackRoute:ZSAppRoute(route) withParameters:parameters targetCallback:targetCallback];
+}
+
++ (void)checkDefaulUrl:(NSString *)route{
+    if (!route || [route isEqualToString:@""]) {
+        ZSRouterErrorLog(@"Route Url should not be null !");
+    }
+    if ([route containsString:@"://"]) {
+        ZSRouterErrorLog(@"使用Default Route方法，不需要额外添加Scheme !");
+    }
+}
+
+@end

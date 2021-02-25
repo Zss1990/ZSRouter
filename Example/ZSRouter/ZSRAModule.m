@@ -46,4 +46,9 @@
 
 }
 
+- (void)didReceiveCustomEvent:(SKCustomEventType)eventType params:(NSDictionary *)params{
+    NSLog(@"--->:%s",__func__);
+    NSLog(@"%@",params);
+}
+
 @end

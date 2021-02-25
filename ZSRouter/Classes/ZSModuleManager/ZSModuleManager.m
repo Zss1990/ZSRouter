@@ -141,6 +141,14 @@ static CFComparisonResult WTModuleItemPriorityCompare(const void *ptr1, const vo
     return self.moduleCache[moduleName];
 }
 
++ (void)triggerCustomEvent:(SKCustomEventType)eventType params:(NSDictionary *_Nullable)params{
+    [[ZSModuleManager instance] enumerateModulesUsingBlock:^(id  _Nonnull module, BOOL * _Nonnull stop) {
+        if ([module respondsToSelector:@selector(didReceiveCustomEvent:params:)]) {
+            [module didReceiveCustomEvent:eventType params:params];
+        }
+    }];
+}
+
 @end
 
 

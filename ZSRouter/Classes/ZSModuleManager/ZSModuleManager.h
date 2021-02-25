@@ -6,7 +6,8 @@
 //
 
 #import <Foundation/Foundation.h>
-@protocol ZSModuleProtocol;
+#import "ZSModuleProtocol.h"
+//@protocol ZSModuleProtocol;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -31,6 +32,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (id)moduleInstanceByName:(NSString *)moduleName;
 
 - (void)enumerateModulesUsingBlock:(__attribute__((noescape)) void (^)(id module, BOOL *stop))block;
+
++ (void)triggerCustomEvent:(SKCustomEventType)eventType params:(NSDictionary *_Nullable)params;
 
 @end
 

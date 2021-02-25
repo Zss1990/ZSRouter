@@ -8,6 +8,26 @@
 #import <Foundation/Foundation.h>
 #import <ZSRouter/ZSModuleManager.h>
 
+typedef NS_ENUM(NSInteger, SKCustomEventType)
+{
+    // 用户事件
+    SKLoginEvent = 0,       // 登入
+    SKLogoutEvent,          // 登出
+    // UI事件
+    SKEnterHomePageEvent,   // 进入首页
+    // 司机事件
+    SKStartWorkingEvent,    // 出车
+    SKStartServiceEvent,    // 服务中
+    SKEndWorkingEvent,      // 收车
+    // 订单事件
+    SKOrderStartEvent,      // 去接乘客
+    SKCarWaitingEvent,      // 等待乘客
+    SKTripStartEvent,       // 去送乘客
+    SKPaySendEvent,         // 确认金额
+    SKTripEndEvent,         // 结束行程
+    SKOrderCancelledEvent,  // 订单取消
+};
+
 NS_ASSUME_NONNULL_BEGIN
 
 @protocol ZSModuleProtocol <NSObject>
@@ -51,6 +71,8 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler;
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler;
+
+- (void)didReceiveCustomEvent:(SKCustomEventType)eventType params:(NSDictionary *)params;
 @end
 
 NS_ASSUME_NONNULL_END
