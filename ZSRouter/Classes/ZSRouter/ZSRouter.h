@@ -234,7 +234,7 @@ typedef void (^ZSRouterUnregisterURLHandler)(NSString * _Nullable route, NSDicti
 static  NSString *const app_router_scheme = @"app_router_scheme";
 
 // 使用默认的Scheme，不需要添加额外的Scheme
-@interface ZSRouter (Default)
+@interface ZSRouter (AppScheme)
 
 /// 快速获取APP的scheme值；会从mainbundle的Info.plist中获取“app_router_scheme”配置的值；
 + (NSString *)appScheme;
@@ -244,16 +244,16 @@ static  NSString *const app_router_scheme = @"app_router_scheme";
 + (NSString *)appSchemeRoute:(NSString *)routePattern;
 
 // 注册
-+ (void)addDefaultRoute:(NSString *)routePattern handler:(ZSRouterHandler)handlerBlock;
-+ (void)addDefaultObjectRoute:(NSString *)routePattern handler:(ZSObjectRouterHandler)handlerBlock;
-+ (void)addDefaultCallbackRoute:(NSString *)routePattern handler:(ZSCallbackRouterHandler)handlerBlock;
++ (void)addAppSchemeRoute:(NSString *)routePattern handler:(ZSRouterHandler)handlerBlock;
++ (void)addAppSchemeObjectRoute:(NSString *)routePattern handler:(ZSObjectRouterHandler)handlerBlock;
++ (void)addAppSchemeCallbackRoute:(NSString *)routePattern handler:(ZSCallbackRouterHandler)handlerBlock;
 // 执行
-+ (BOOL)exeDefaultRoute:(NSString *)route;
-+ (BOOL)exeDefaultRoute:(NSString *)route withParameters:(NSDictionary<NSString *, id> *_Nullable)parameters;
-+ (id _Nullable )exeDefaultObjectRoute:(NSString *_Nullable)route;
-+ (id _Nullable )exeDefaultObjectRoute:(NSString *)route withParameters:(NSDictionary<NSString *, id> *_Nullable)parameters;
-+ (BOOL)exeDefaultCallbackRoute:(NSString *)route targetCallback:(ZSRouterCallback _Nullable )targetCallback;
-+ (BOOL)exeDefaultCallbackRoute:(NSString *)route withParameters:(NSDictionary<NSString *, id> *_Nullable)parameters targetCallback:(ZSRouterCallback _Nullable)targetCallback;
++ (BOOL)exeAppSchemeRoute:(NSString *)route;
++ (BOOL)exeAppSchemeRoute:(NSString *)route withParameters:(NSDictionary<NSString *, id> *_Nullable)parameters;
++ (id _Nullable )exeAppSchemeObjectRoute:(NSString *_Nullable)route;
++ (id _Nullable )exeAppSchemeObjectRoute:(NSString *)route withParameters:(NSDictionary<NSString *, id> *_Nullable)parameters;
++ (BOOL)exeAppSchemeCallbackRoute:(NSString *)route targetCallback:(ZSRouterCallback _Nullable )targetCallback;
++ (BOOL)exeAppSchemeCallbackRoute:(NSString *)route withParameters:(NSDictionary<NSString *, id> *_Nullable)parameters targetCallback:(ZSRouterCallback _Nullable)targetCallback;
 
 @end
 
