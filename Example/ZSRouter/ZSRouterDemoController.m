@@ -13,6 +13,7 @@
 #import "RouterCallbackController.h"
 #import "ZSRouterLogger.h"
 #import "ZSRouterNavigation.h"
+#import <ZSRouter/ZSModuleManager.h>
 
 @interface ZSRouterDemoController ()
 @property (weak, nonatomic) IBOutlet UILabel *testLabel;
@@ -28,6 +29,7 @@
     
     [self addRoute];
     [self rewriteMatchRules];
+    [ZSModuleManager triggerCustomEvent:SKEnterHomePageEvent params:@{@"EnterHomePage":@749372497329}];
 }
 
 - (void)addRoute

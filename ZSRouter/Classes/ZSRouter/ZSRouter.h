@@ -220,13 +220,21 @@ typedef void (^ZSRouterUnregisterURLHandler)(NSString * _Nullable route, NSDicti
 
 @end
 
+@interface ZSRouter (Util)
+/// 尝试push，如果objVC是一个UIViewController,则进行push；如果不是返回NO
+/// @param objVC 疑是UIViewController对象
++ (BOOL)tryPushVC:(id)objVC;
+
+@end
+
 #define ZSAppScheme  [ZSRouter appScheme]
 #define ZSAppRoute(routePattern) [ZSRouter appSchemeRoute:routePattern]
 
-//在mainbundle的Info.plist中配置“app_router_scheme”
+//在mainbundle的Info.plist中配置默认“app_router_scheme”
 static  NSString *const app_router_scheme = @"app_router_scheme";
 
-@interface ZSRouter (Util)
+// 使用默认的Scheme，不需要添加额外的Scheme
+@interface ZSRouter (AppScheme)
 
 /// 快速获取APP的scheme值；会从mainbundle的Info.plist中获取“app_router_scheme”配置的值；
 + (NSString *)appScheme;
@@ -235,12 +243,18 @@ static  NSString *const app_router_scheme = @"app_router_scheme";
 /// @param routePattern routePattern
 + (NSString *)appSchemeRoute:(NSString *)routePattern;
 
-/// 尝试push，如果objVC是一个UIViewController,则进行push；如果不是返回NO
-/// @param objVC 疑是UIViewController对象
-
-+ (BOOL)tryPushVC:(id)objVC;
+// 注册
++ (void)addAppSchemeRoute:(NSString *)routePattern handler:(ZSRouterHandler)handlerBlock;
++ (void)addAppSchemeObjectRoute:(NSString *)routePattern handler:(ZSObjectRouterHandler)handlerBlock;
++ (void)addAppSchemeCallbackRoute:(NSString *)routePattern handler:(ZSCallbackRouterHandler)handlerBlock;
+// 执行
++ (BOOL)exeAppSchemeRoute:(NSString *)route;
++ (BOOL)exeAppSchemeRoute:(NSString *)route withParameters:(NSDictionary<NSString *, id> *_Nullable)parameters;
++ (id _Nullable )exeAppSchemeObjectRoute:(NSString *_Nullable)route;
++ (id _Nullable )exeAppSchemeObjectRoute:(NSString *)route withParameters:(NSDictionary<NSString *, id> *_Nullable)parameters;
++ (BOOL)exeAppSchemeCallbackRoute:(NSString *)route targetCallback:(ZSRouterCallback _Nullable )targetCallback;
++ (BOOL)exeAppSchemeCallbackRoute:(NSString *)route withParameters:(NSDictionary<NSString *, id> *_Nullable)parameters targetCallback:(ZSRouterCallback _Nullable)targetCallback;
 
 @end
-
 
 NS_ASSUME_NONNULL_END
