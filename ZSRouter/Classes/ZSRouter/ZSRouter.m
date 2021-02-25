@@ -533,11 +533,26 @@ typedef NS_ENUM(NSInteger,ZSRouterType) {
     return routeURL;
 }
 
-
-
 @end
 
 @implementation ZSRouter (Util)
+
+/// 尝试push，如果objVC是一个UIViewController,则进行push；如果不是返回NO
+/// @param objVC 疑是UIViewController对象
+
++ (BOOL)tryPushVC:(id)objVC
+{
+    if (![objVC isKindOfClass:[UIViewController class]]) {
+        return NO;
+    }
+    UIViewController *vc = (UIViewController *)objVC;
+    [ZSRouterNavigation pushViewController:vc animated:YES];
+    return YES;
+}
+
+@end
+
+@implementation ZSRouter (Default)
 
 /// 快速获取APP的scheme值；会从mainbundle的Info.plist中获取“app_router_scheme”配置的值；
 + (NSString *)appScheme
@@ -555,22 +570,6 @@ typedef NS_ENUM(NSInteger,ZSRouterType) {
     NSString *route = [NSString stringWithFormat:@"%@://%@", scheme,routePattern];
     return route;
 }
-/// 尝试push，如果objVC是一个UIViewController,则进行push；如果不是返回NO
-/// @param objVC 疑是UIViewController对象
-
-+ (BOOL)tryPushVC:(id)objVC
-{
-    if (![objVC isKindOfClass:[UIViewController class]]) {
-        return NO;
-    }
-    UIViewController *vc = (UIViewController *)objVC;
-    [ZSRouterNavigation pushViewController:vc animated:YES];
-    return YES;
-}
-
-@end
-
-@implementation ZSRouter (Default)
 // 注册
 + (void)addDefaultRoute:(NSString *)routePattern handler:(ZSRouterHandler)handlerBlock{
     [ZSRouter checkDefaulUrl:routePattern];

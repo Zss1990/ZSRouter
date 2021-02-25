@@ -220,13 +220,21 @@ typedef void (^ZSRouterUnregisterURLHandler)(NSString * _Nullable route, NSDicti
 
 @end
 
+@interface ZSRouter (Util)
+/// 尝试push，如果objVC是一个UIViewController,则进行push；如果不是返回NO
+/// @param objVC 疑是UIViewController对象
++ (BOOL)tryPushVC:(id)objVC;
+
+@end
+
 #define ZSAppScheme  [ZSRouter appScheme]
 #define ZSAppRoute(routePattern) [ZSRouter appSchemeRoute:routePattern]
 
-//在mainbundle的Info.plist中配置“app_router_scheme”
+//在mainbundle的Info.plist中配置默认“app_router_scheme”
 static  NSString *const app_router_scheme = @"app_router_scheme";
 
-@interface ZSRouter (Util)
+// 使用默认的Scheme，不需要添加额外的Scheme
+@interface ZSRouter (Default)
 
 /// 快速获取APP的scheme值；会从mainbundle的Info.plist中获取“app_router_scheme”配置的值；
 + (NSString *)appScheme;
@@ -234,16 +242,6 @@ static  NSString *const app_router_scheme = @"app_router_scheme";
 /// 快速获取APP的scheme值,并根据routePattern拼接为route地址
 /// @param routePattern routePattern
 + (NSString *)appSchemeRoute:(NSString *)routePattern;
-
-/// 尝试push，如果objVC是一个UIViewController,则进行push；如果不是返回NO
-/// @param objVC 疑是UIViewController对象
-
-+ (BOOL)tryPushVC:(id)objVC;
-
-@end
-
-// 使用默认的Scheme，不需要添加额外的Scheme
-@interface ZSRouter (Default)
 
 // 注册
 + (void)addDefaultRoute:(NSString *)routePattern handler:(ZSRouterHandler)handlerBlock;
