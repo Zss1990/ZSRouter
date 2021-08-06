@@ -1,17 +1,9 @@
-# 吉利内部私有库
-# source 'https://gitlab.geely.com/p-admp/iOS-sw-spec/ios-admpspecs.git'
-# # 吉利内部私有库 外网可访问
-# # source 'https://gitee.com/sweetApp/cocoapods-specs.git'
-# source 'https://github.com/CocoaPods/Specs.git'
-
 
 use_frameworks!
 platform :ios, '9.0'
 
 target 'ZSRouter_Example' do
   pod 'ZSRouter', :path => '../'
-
-  
 
   target 'ZSRouter_Tests' do
     inherit! :search_paths
